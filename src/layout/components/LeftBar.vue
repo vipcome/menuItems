@@ -25,6 +25,10 @@
           <span>长者档案中心</span>
         </template>
       </el-menu-item>
+      <el-menu-item index="/video">
+        <i class="el-icon-video-camera"></i>
+        <span slot="title">直播播放器</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -52,6 +56,9 @@ export default {
       },{
         path:'/recordCenter/details',
         index:'/recordCenter/list'
+      },{
+        path:'/video',
+        index:'/video'
       }]
       // this.routerPath = this.$route.path
       pathAll.forEach(v=>{

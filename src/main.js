@@ -6,6 +6,12 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import request from './utils/request'
 import global from "../src/utils/global_variable"
+import VideoPlayer from 'vue-video-player'
+import 'videojs-contrib-hls'
+//直播插件
+require('video.js/dist/video-js.css')
+require('vue-video-player/src/custom-theme.css')
+Vue.use(VideoPlayer)
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);

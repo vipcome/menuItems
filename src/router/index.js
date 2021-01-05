@@ -59,6 +59,12 @@ const routes = [
           }
         ]
       },
+      {
+        path: '/video',
+        name: 'video',
+        component: () => import('@/views/video/index'),
+        meta: { title: '直播播放器'}
+      }
     ]
   }
 ];
