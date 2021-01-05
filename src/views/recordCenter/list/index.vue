@@ -255,7 +255,6 @@ export default {
       this.searchJSON = []
     },
     goDetail(row){
-      console.log(row)
       this.$router.push({path:'/recordCenter/details',query: {id:row.id}})
     }
   }

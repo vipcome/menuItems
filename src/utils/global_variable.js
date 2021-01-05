@@ -1,5 +1,5 @@
 const webRealPath = 'https://comuhome-ty.yunzhuyang.com/gov_api'
-// const webRealPath = 'http://192.168.20.70:9003'
+// const webRealPath = 'https://qycomuhome.qyyanglao.com/gov_api'
 
 export default {
     webRealPath: webRealPath

@@ -5,10 +5,10 @@
       <el-breadcrumb-item>长者详情</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="header">
-      <topHeader></topHeader>
+      <topHeader :oldMan="oldMan"></topHeader>
     </div>
     <div class="content">
-      <contentBoy></contentBoy>
+      <contentBoy :contentData="contentData"></contentBoy>
     </div>
   </div>
 </template>
@@ -19,12 +19,53 @@ import contentBoy from './content/index'
 export default {
   data(){
     return{
-      id:this.$route.query.id
+      id:this.$route.query.id,
+      userData:''
     }
   },
   components:{
     topHeader,
     contentBoy
+  },
+  computed:{
+    oldMan(){
+      if(this.userData === ''){
+        return {}
+      }
+      let data = this.userData.base_info.data
+      let oldMan={
+        user_img:data.user_img,
+        user_name:data.user_name,
+        user_phone:data.user_phone
+      }
+      return oldMan
+    },
+    contentData(){
+      if(this.userData === ''){
+        return {}
+      }
+      return this.userData
+    }
+  },
+  mounted(){
+    this.getData()
+  },
+  methods:{
+    getData(){
+      this.http
+        .post('/elderlyrecordscentre/elderly_detail', {
+          access_token: '94316AFF0DCB987371ED7B6F59751B76',
+          id:this.id
+        })
+        .then((res) => {
+          console.log("res:",res)
+          if (res.code === 0) {
+            this.userData = res.data
+          } else {
+            this.$message.error(res.msg)
+          }
+        })
+    }
   }
 }
 </script>

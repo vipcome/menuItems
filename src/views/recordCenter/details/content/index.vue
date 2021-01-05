@@ -2,7 +2,9 @@
   <div class="content-main">
     <scrollIntoView :tabList="tabList" @changeTab="changeTab"></scrollIntoView>
     <div class="content">
-      <div class="item" id="baseinfo">基本情况</div>
+      <div class="item" id="baseinfo">
+        <baseInfoView :baseData="baseData"></baseInfoView>
+      </div>
       <div class="item" id="power">能力评估</div>
       <div class="item" id="capacity">智能检测</div>
       <div class="item" id="physucal">体适能测评</div>
@@ -13,7 +15,14 @@
 
 <script>
 import scrollIntoView from '@/components/scrollIntoView/index'
+import baseInfoView from './baseInfo/index'
 export default {
+  props:{
+    contentData:{
+      type:Object,
+      default:{}
+    }
+  },
   data () {
     return {
       tabList:[
@@ -45,14 +54,37 @@ export default {
       ]
     }
   },
-
+  computed:{
+    baseData(){
+      console.log("测试：",this.contentData)
+      if(!this.contentData){
+        return {}
+      }
+      let base_info = this.contentData.base_info.data
+      let item = {
+        user_name:base_info.user_name
+      }
+      return item
+    }
+  },
+  watch:{
+    contentData:{
+      handler:function(val){
+        console.log("数据：",val)
+      },
+      deep:true
+    }
+  },
   components: {
-    scrollIntoView
+    scrollIntoView,
+    baseInfoView
   },
 
   computed: {},
 
-  mounted() {},
+  mounted() {
+    
+  },
 
   methods: {
     changeTab(item){
@@ -64,6 +96,9 @@ export default {
           behavior: "smooth",  // 平滑过渡
           block:    "center"  // 上边框与视窗顶部平齐。默认值 start
       });
+    },
+    getData(){
+      
     }
   }
 }
