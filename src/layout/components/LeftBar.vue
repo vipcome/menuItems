@@ -29,6 +29,10 @@
         <i class="el-icon-video-camera"></i>
         <span slot="title">直播播放器</span>
       </el-menu-item>
+      <el-menu-item index="/sku">
+        <i class="el-icon-video-camera"></i>
+        <span slot="title">多规格</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -59,6 +63,9 @@ export default {
       },{
         path:'/video',
         index:'/video'
+      },{
+        path:'/sku',
+        index:'/sku'
       }]
       // this.routerPath = this.$route.path
       pathAll.forEach(v=>{

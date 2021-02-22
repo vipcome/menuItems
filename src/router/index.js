@@ -64,6 +64,12 @@ const routes = [
         name: 'video',
         component: () => import('@/views/video/index'),
         meta: { title: '直播播放器'}
+      },
+      {
+        path: '/sku',
+        name: 'sku',
+        component: () => import('../views/sku/index'),
+        meta: { title: '多规格'}
       }
     ]
   }
